@@ -1,0 +1,259 @@
+/* General Reset */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  color: #ffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 90vw;
+  /* height: 98vh; */
+  display: flex;
+  flex-direction: column;
+  background-color: #86469c;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  padding-top: 0.2rem;
+}
+
+.container header {
+  font-family: "Volkhov", serif;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 3rem;
+  font-size: 25px;
+  color: #fff;
+}
+
+.icons .fa-solid {
+  font-size: 20px;
+}
+
+.icons {
+  display: flex;
+}
+
+.icon {
+  cursor: pointer;
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #bc7fcd;
+  transition: 0.3s ease;
+}
+
+.icon:hover {
+  background: #ffcdea;
+  color: #86469c;
+  transform: translateX(-5px);
+}
+
+.icons #prev {
+  margin-right: 2rem;
+}
+
+.icons #next:hover {
+  transform: translateX(5px);
+}
+
+.calendar {
+  padding: 0.5rem 1.5rem;
+}
+
+.calendar ul.weeks {
+  list-style: none;
+  display: flex;
+  margin-bottom: 0.1rem;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+
+.calendar ul li {
+  width: 14%;
+}
+
+.calendar .days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 7px;
+  text-align: center;
+}
+
+.calendar .days .day {
+  background-color: #fff;
+  color: #86469c;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.5s ease;
+  height: 95px; /* Increased height for consistency */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.calendar .days .day:hover {
+  background: #f0cff9;
+}
+
+.inactive {
+  color: #86469c;
+  background-color: #d0cdcd;
+  border-radius: 0.5rem;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-day {
+  background: #ffcdea; /* Background color for event day */
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.event-style {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5e015e;
+  margin-top: 5px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  border-radius: 8px;
+  width: 550px; /* Increased width for better fit */
+  max-width: 90%;
+}
+
+.modal.active {
+  display: block;
+}
+
+.close-btn {
+  cursor: pointer;
+  font-size: 18px;
+  float: right;
+  color: #86469c;
+}
+
+.modal h3 {
+  color: #5e015e;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.event-list {
+  margin-bottom: 10px;
+}
+
+.event {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #86469c;
+  border-radius: 5px;
+  background-color: #ffcdea;
+  color: #5e015e;
+}
+
+#eventForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#eventForm label {
+  font-size: 14px;
+  color: #5e015e;
+}
+
+#eventName,
+.timer-inputs input {
+  height: 30px;
+  border: 1.5px solid #86469c;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.timer-inputs {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#add-event {
+  height: 40px;
+  background-color: #86469c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#add-event:hover {
+  background-color: #5e015e;
+}
+
+/* Timer */
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  gap: 5px;
+}
+
+.timer span {
+  font-size: 14px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.timer-controls button {
+  margin: 2px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #86469c;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.timer-controls button:hover {
+  background-color: #69377a;
+}
