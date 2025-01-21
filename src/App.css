@@ -257,3 +257,20 @@ body {
 .timer-controls button:hover {
   background-color: #69377a;
 }
+.priority {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+
+.priority.high {
+  color: red;
+}
+
+.priority.medium {
+  color: orange;
+}
+
+.priority.low {
+  color: green;
+}

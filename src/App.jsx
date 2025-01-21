@@ -9,6 +9,8 @@ const App = () => {
   const [eventName, setEventName] = useState("");
   const [timer, setTimer] = useState({ hours: 0, minutes: 0, seconds: 0 });
   const [selectedEvents, setSelectedEvents] = useState([]);
+  const [priority, setPriority] = useState("low");
+  const [progress, setProgress] = useState(0);
 
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -81,6 +83,8 @@ const App = () => {
     setModalActive(false);
     setEventName("");
     setTimer({ hours: 0, minutes: 0, seconds: 0 });
+    setPriority("low");
+    setProgress(0);
   };
 
   const addEvent = (e) => {
@@ -89,10 +93,14 @@ const App = () => {
       date: eventDate,
       name: eventName,
       timer: { ...timer },
+      priority,
+      progress,
     };
     setEvents([...events, newEvent]);
     setEventName("");
     setTimer({ hours: 0, minutes: 0, seconds: 0 });
+    setPriority("low");
+    setProgress(0);
   };
 
   const updateTimer = (event, updatedTimer) => {
@@ -103,15 +111,14 @@ const App = () => {
   };
 
   const deleteEvent = (eventToDelete) => {
-    // Delete from the events array
     const updatedEvents = events.filter(event => event !== eventToDelete);
     setEvents(updatedEvents);
-
-    // Close the modal if it's open
     setModalActive(false);
     setEventDate("");
     setEventName("");
     setTimer({ hours: 0, minutes: 0, seconds: 0 });
+    setPriority("low");
+    setProgress(0);
   };
 
   const changeMonth = (direction) => {
@@ -153,7 +160,10 @@ const App = () => {
           <div className="event-list">
             {selectedEvents.map((event, index) => (
               <div key={index} className="event">
-                <span className="event-name">{event.name}</span>
+                <p className="event-name">{`Event: ${event.name}`}</p>
+
+                <span className={`Priority ${event.priority}`}>Priority: {event.priority}</span>
+                
                 {event.timer && (
                   <Timer
                     initialTime={event.timer}
@@ -178,6 +188,17 @@ const App = () => {
               onChange={(e) => setEventName(e.target.value)}
               placeholder="Task name"
             />
+            <label htmlFor="priority">Priority:</label>
+            <select
+              id="priority"
+              value={priority}
+              onChange={(e) => setPriority(e.target.value)}
+            >
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+            
             <div className="timer-inputs">
               <input
                 type="number"
